@@ -1,17 +1,29 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product
+from .models import Product, Category, Subcategory
 
 # Create your views here.
 
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
-
     products = Product.objects.all()
     query = None
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    category = None
+    subcategory = None
 
     if request.GET:
+        if 'category' in request.GET:
+            category_name = request.GET['category']
+            category = get_object_or_404(Category, name=category_name)
+            if 'subcategory' in request.GET:
+                subcategory_name = request.GET['subcategory']
+                subcategory = get_object_or_404(Subcategory, name=subcategory_name, category=category)
+                products = products.filter(subcategory=subcategory)
+            else:
+                products = products.filter(category=category)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -24,6 +36,10 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
+        'categories': categories,
+        'subcategories': subcategories,
+        'category': category,
+        'subcategory': subcategory,
     }
 
     return render(request, 'products/products.html', context)

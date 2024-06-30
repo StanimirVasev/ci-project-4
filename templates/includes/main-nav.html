@@ -6,8 +6,9 @@
                 Cameras
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="camera-link">
-                <a href="" class="dropdown-item">Entry Level</a>
-                <a href="" class="dropdown-item">Professional Level</a>
+                <a href="{% url 'products' %}?category=cameras&subcategory=entry_level" class="dropdown-item">Entry Level</a>
+                <a href="{% url 'products' %}?category=cameras&subcategory=professional_level" class="dropdown-item">Professional Level</a>
+                <a href="{% url 'products' %}?category=cameras" class="dropdown-item">All Cameras</a>
             </div>
         </li>
 
@@ -16,8 +17,9 @@
                 Lenses
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="lens-link">
-                <a href="" class="dropdown-item">Prime Lenses</a>
-                <a href="" class="dropdown-item">Zoom Lenses</a>
+                <a href="{% url 'products' %}?category=lenses&subcategory=prime" class="dropdown-item">Prime Lenses</a>
+                <a href="{% url 'products' %}?category=lenses&subcategory=zoom" class="dropdown-item">Zoom Lenses</a>
+                <a href="{% url 'products' %}?category=lenses" class="dropdown-item">All Lenses</a>
             </div>
         </li>
 
@@ -26,8 +28,9 @@
                 Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">Camera Accessories</a>
-                <a href="" class="dropdown-item">Optical Accessories</a>
+                <a href="{% url 'products' %}?category=accessories&subcategory=camera" class="dropdown-item">Camera Accessories</a>
+                <a href="{% url 'products' %}?category=accessories&subcategory=optical" class="dropdown-item">Optical Accessories</a>
+                <a href="{% url 'products' %}?category=accessories" class="dropdown-item">All Accessories</a>
             </div>
         </li>
 
