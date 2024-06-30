@@ -12,8 +12,25 @@ def all_products(request):
     subcategories = Subcategory.objects.all()
     category = None
     subcategory = None
+    sort = None
+    direction = None
+
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'name'
+            if sortkey == 'category':
+                sortkey = 'category__name'
+            
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
         if 'category' in request.GET:
             category_name = request.GET['category']
             category = get_object_or_404(Category, name=category_name)
@@ -33,6 +50,9 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query,
@@ -40,6 +60,7 @@ def all_products(request):
         'subcategories': subcategories,
         'category': category,
         'subcategory': subcategory,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)

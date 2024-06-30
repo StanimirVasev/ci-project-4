@@ -1,51 +1,31 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="camera-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cameras
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="camera-link">
-                <a href="{% url 'products' %}?category=cameras&subcategory=entry_level" class="dropdown-item">Entry Level</a>
-                <a href="{% url 'products' %}?category=cameras&subcategory=professional_level" class="dropdown-item">Professional Level</a>
-                <a href="{% url 'products' %}?category=cameras" class="dropdown-item">All Cameras</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="lens-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Lenses
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="lens-link">
-                <a href="{% url 'products' %}?category=lenses&subcategory=prime" class="dropdown-item">Prime Lenses</a>
-                <a href="{% url 'products' %}?category=lenses&subcategory=zoom" class="dropdown-item">Zoom Lenses</a>
-                <a href="{% url 'products' %}?category=lenses" class="dropdown-item">All Lenses</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="accessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Accessories
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="{% url 'products' %}?category=accessories&subcategory=camera" class="dropdown-item">Camera Accessories</a>
-                <a href="{% url 'products' %}?category=accessories&subcategory=optical" class="dropdown-item">Optical Accessories</a>
-                <a href="{% url 'products' %}?category=accessories" class="dropdown-item">All Accessories</a>
-            </div>
-        </li>
-
+        {% for category in categories %}
+            <li class="nav-item dropdown">
+                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="{{ category.name }}-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ category.name|title }}
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="{{ category.name }}-link">
+                    {% for subcategory in subcategories %}
+                        {% if subcategory.category_id == category.id %}
+                            <a href="{% url 'products' %}?category={{ category.name }}&subcategory={{ subcategory.name }}" class="dropdown-item">{{ subcategory.friendly_name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="{% url 'products' %}?category={{ category.name }}" class="dropdown-item">All {{ category.name|title }}</a>
+                </div>
+            </li>
+        {% endfor %}
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
-
         <li class="nav-item">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="blog-link">
                 Blog
