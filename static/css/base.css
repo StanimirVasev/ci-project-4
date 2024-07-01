@@ -105,6 +105,23 @@ h1 {
     background-color: #fff;
 }
 
+.card-footer .btn-black {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 10px 10px; /* rounded corners */
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.card-footer .btn-black:hover,
+.card-footer .btn-black:active,
+.card-footer .btn-black:focus {
+    background-color: orange;
+    color: #fff;
+}
+
 /* Button */
 
 .btt-button {
