@@ -35,6 +35,13 @@
                     {% else %}
                         <small class="text-muted">No Rating</small>
                     {% endif %}
+                    <p>
+                        {% if product.stock_status %}
+                            <small><i class="fa-solid fa-check"></i> In Stock</small>
+                        {% else %}
+                            <small><i class="fa-solid fa-xmark"></i> Out of Stock</small>
+                        {% endif %}
+                    </p>
                     <p class="mt-3">{{ product.description }}</p>
                 </div>
             </div>
