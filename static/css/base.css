@@ -122,6 +122,10 @@ h1 {
     color: #fff;
 }
 
+.table.table-sm.table-borderless tr:not(:nth-last-child(-n+2)) {
+    border-bottom: 1px solid #ccc;
+}
+
 /* Font awesome icons styling */
 
 .fa-solid.fa-check {
@@ -186,7 +190,8 @@ h1 {
 .remove-item {
     cursor: pointer;
 }
-  
+
+
 
 /* -------------------------------- Media Queries */
 
