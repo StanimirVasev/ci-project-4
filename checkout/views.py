@@ -19,6 +19,8 @@ def checkout(request):
         'order_form': order_form,
         'categories': categories,
         'subcategories': subcategories,
+        'stripe_public_key': 'pk_test_51PYsivGF2F0h3PztFJD4RPNPnNp3lQPVBohepmvzDQ0IDItVZ1bLMC6CRcO5bPssFasXvsjM7hThB1OCeo6e1IhZ00uWMtNdya',
+        'client_secret': 'test client secret',
     }
 
     return render(request, template, context)
