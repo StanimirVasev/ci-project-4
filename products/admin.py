@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
         'subcategory',
         'price',
         'rating',
+        'stock_status',
         'image',
     )
 
