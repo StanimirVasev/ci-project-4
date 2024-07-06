@@ -1,0 +1,1 @@
+web: gunicorn camera_rental_project.wsgi:application
