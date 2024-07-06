@@ -1,0 +1,2 @@
+HEROKU_API_KEY is set
+[{"model": "products.category", "pk": 1, "fields": {"name": "cameras", "friendly_name": "Cameras"}}, {"model": "products.category", "pk": 2, "fields": {"name": "lenses", "friendly_name": "Lenses"}}, {"model": "products.category", "pk": 3, "fields": {"name": "accessories", "friendly_name": "Accessories"}}]
