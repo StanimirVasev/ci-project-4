@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,8 +27,14 @@ SECRET_KEY = 'django-insecure-f4z9h8uv+mf&cmd_kc7nex^7)u%2a+7ob+qu+nnn#r%rr0*#)*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-stanimirvase-ciproject4-z5s4hvy3fjm.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-stanimirvase-ciproject4-z5s4hvy3fjm.ws.codeinstitute-ide.net',
+    'ci-project-4.herokuapp.com']
 
+HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
+if 'HEROKU_API_KEY' in os.environ:
+    print("HEROKU_API_KEY is set")
+else:
+    print("HEROKU_API_KEY is not set")
 
 # Application definition
 
@@ -119,12 +126,18 @@ WSGI_APPLICATION = 'camera_rental_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
 
 
 # Password validation
@@ -177,6 +190,7 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 DEFAULT_FROM_EMAIL = 'camshop@example.com'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
