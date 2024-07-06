@@ -1,1 +1,56 @@
-[{"model": "products.subcategory", "pk": 1, "fields": {"category": 2, "name": "prime", "friendly_name": "Prime Lenses"}}, {"model": "products.subcategory", "pk": 2, "fields": {"category": 2, "name": "zoom", "friendly_name": "Zoom Lenses"}}, {"model": "products.subcategory", "pk": 3, "fields": {"category": 1, "name": "entry_level", "friendly_name": "Entry Level Cameras"}}, {"model": "products.subcategory", "pk": 4, "fields": {"category": 1, "name": "professional_level", "friendly_name": "Professional Level Cameras"}}, {"model": "products.subcategory", "pk": 5, "fields": {"category": 3, "name": "camera", "friendly_name": "Camera Accessories"}}, {"model": "products.subcategory", "pk": 6, "fields": {"category": 3, "name": "optical", "friendly_name": "Optical Accessories"}}]
+[
+{
+    "model": "products.subcategory",
+    "pk": 1,
+    "fields": {
+        "category": 2,
+        "name": "prime",
+        "friendly_name": "Prime Lenses"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 2,
+    "fields": {
+        "category": 2,
+        "name": "zoom",
+        "friendly_name": "Zoom Lenses"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 3,
+    "fields": {
+        "category": 1,
+        "name": "entry_level",
+        "friendly_name": "Entry Level Cameras"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 4,
+    "fields": {
+        "category": 1,
+        "name": "professional_level",
+        "friendly_name": "Professional Level Cameras"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 5,
+    "fields": {
+        "category": 3,
+        "name": "camera",
+        "friendly_name": "Camera Accessories"
+    }
+},
+{
+    "model": "products.subcategory",
+    "pk": 6,
+    "fields": {
+        "category": 3,
+        "name": "optical",
+        "friendly_name": "Optical Accessories"
+    }
+}
+]
