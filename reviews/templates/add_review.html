@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container header-container">
+    <div class="row">
+      <div class="col">
+        <hr>
+        <h2 class="logo-font mb-4">Add a Review for {{ product.name }}</h2>
+        <h5 class="text-muted">We value your feedback on {{ product.name }}</h5>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+<!-- If user is authenticated then show the add review form -->
+{% if user.is_authenticated %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <form method="POST" action="{% url 'add_review' product.id %}" class="form mb-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h5 class="text-muted">Review Details</h5>
+                <hr>
+                {{ form.as_p }}
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% if field.errors %}
+                                    <li>{{ field.label }}: {{ field.errors|join:", " }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-black rounded-0" type="submit">Submit Review</button>
+            <button class="btn btn-outline-black rounded-0" type="reset">Cancel</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% else %}
+<!-- If user is not authenticated -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Only registered users can leave a review -->
+      <p class="mt-3 mb-2">Only registered users are allowed to leave reviews. If you wish to leave a review, please sign up first.</p>
+      <!-- Sign up button -->
+      <a class="btn btn-black rounded-0 mt-0" href="{% url 'account_signup' %}">Sign Up Here</a>
+      <br>
+      <!-- Log in -->
+      <p class="mt-3 mb-2">If you have registered already, you should log in to leave your review:</p>
+      <a class="btn btn-black rounded-0 mt-0" href="{% url 'account_login' %}">Log In Here</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
