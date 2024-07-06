@@ -79,12 +79,20 @@
                                                 {% else %}
                                                     <small class="text-muted">No Rating</small>
                                                 {% endif %}
-
-                                            <p>
+            
+                                            <p class="lead mb-0 text-center">
                                                 {% if product.stock_status %}
                                                     <small class="text-muted"><i class="fa-solid fa-check"></i> In Stock</small>
                                                 {% else %}
                                                     <small class="text-muted"><i class="fa-solid fa-xmark"></i> Out of Stock</small>
+                                                {% endif %}
+                                            </p>
+                                            <p class="lead mb-0 text-center">
+                                            {% if request.user.is_superuser %}
+                                                <small>
+                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                </small>
                                                 {% endif %}
                                             </p>
                                         </div>
