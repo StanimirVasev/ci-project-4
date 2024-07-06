@@ -1,3 +1,5 @@
+# 400/500 error caused by shopping details not showing in Stripe ... #
+
 from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
@@ -5,6 +7,7 @@ from products.models import Product
 
 import json
 import time
+import stripe
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -26,8 +29,8 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        bag = intent.metadata.bag
-        save_info = intent.metadata.save_info
+        bag = intent.metadata.get('bag')
+        save_info = intent.metadata.get('save_info')
 
         # Get the Charge object
         stripe_charge = stripe.Charge.retrieve(
@@ -38,10 +41,17 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2) # updated
 
+        if shipping_details is None:
+        # Handle the case where shipping details are not provided
+            return HttpResponse(
+            content=f'Webhook received: {event["type"]} | ERROR: Shipping details not provided',
+            status=400)
+
         # Clean data in the shipping details
-        for field, value in shipping_details.address.items():
-            if value == "":
-                shipping_details.address[field] = None
+        if shipping_details:
+            for field, value in shipping_details.address.items():
+                if value == "":
+                    shipping_details.address[field] = None
 
         order_exists = False
         attempt = 1
