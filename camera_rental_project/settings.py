@@ -27,8 +27,10 @@ SECRET_KEY = 'django-insecure-f4z9h8uv+mf&cmd_kc7nex^7)u%2a+7ob+qu+nnn#r%rr0*#)*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-stanimirvase-ciproject4-z5s4hvy3fjm.ws.codeinstitute-ide.net',
-    'ci-project-4.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-stanimirvase-ciproject4-z5s4hvy3fjm.ws.codeinstitute-ide.net',
+    'ci-project-4-ff2f4853aa3a.herokuapp.com'
+]
 
 HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
 if 'HEROKU_API_KEY' in os.environ:
