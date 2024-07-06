@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Subcategory
 from .forms import ProductForm
 
 # Create your views here.
@@ -14,7 +14,10 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
-    categories = None
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    category = None
+    subcategory = None
     sort = None
     direction = None
 
@@ -23,10 +26,10 @@ def all_products(request):
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
+                sortkey = 'name'
             if sortkey == 'category':
                 sortkey = 'category__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -34,9 +37,14 @@ def all_products(request):
             products = products.order_by(sortkey)
             
         if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            category_name = request.GET['category']
+            category = get_object_or_404(Category, name=category_name)
+            if 'subcategory' in request.GET:
+                subcategory_name = request.GET['subcategory']
+                subcategory = get_object_or_404(Subcategory, name=subcategory_name, category=category)
+                products = products.filter(subcategory=subcategory)
+            else:
+                products = products.filter(category=category)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -52,7 +60,10 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
-        'current_categories': categories,
+        'categories': categories,
+        'subcategories': subcategories,
+        'category': category,
+        'subcategory': subcategory,
         'current_sorting': current_sorting,
     }
 
@@ -63,9 +74,13 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
 
     context = {
         'product': product,
+        'categories': categories,
+        'subcategories': subcategories,
     }
 
     return render(request, 'products/product_detail.html', context)
