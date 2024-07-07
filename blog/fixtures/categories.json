@@ -1,0 +1,23 @@
+[
+{
+    "model": "blog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Night photography"
+    }
+},
+{
+    "model": "blog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Wildlife photography"
+    }
+},
+{
+    "model": "blog.category",
+    "pk": 3,
+    "fields": {
+        "name": "Portrait photography"
+    }
+}
+]
