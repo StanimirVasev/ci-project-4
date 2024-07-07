@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container text-center">
+        <div class="row">
+            <div class="col">
+                <h1 class="logo-font">{{ post.title }}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container min-vh-100 d-flex flex-column">
+        <div class="row h-100">
+            <div class="col-12">
+                <div class="blog-post-detail">
+                    <p>{{ post.body }}</p>
+                    <p>Published on {{ post.created_on }}</p>
+                </div> 
+            </div>
+        </div>
+    </div>
+{% endblock %}
