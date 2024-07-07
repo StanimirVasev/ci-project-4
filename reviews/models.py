@@ -24,3 +24,4 @@ class ProductReview(models.Model):
 
     def __str__(self):
         return self.review_title
+

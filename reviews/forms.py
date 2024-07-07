@@ -1,38 +1,38 @@
 from django import forms
-from django.forms import ModelForm, ModelChoiceField
-from .models import ProductReview, Product
+from django.forms import ModelForm
+from django.forms import HiddenInput
+from .models import ProductReview
+
 
 class ProductReviewForm(forms.ModelForm):
-    reviewed_product = ModelChoiceField(queryset=Product.objects.all())
-
+    '''
+    This details how the product review form will display
+    '''
     class Meta:
+        '''
+        The fields on the form that will be displayed. Reviewer is hidden
+        '''
         model = ProductReview
-        fields = ('review_title', 'reviewed_product', 'reviewer', 'review', 'date')
-        widgets = {'reviewer': HiddenInput(), 'date': HiddenInput()}
+        fields = ('review_title', 'reviewed_product', 'reviewer', 'review')
+        widgets = {'reviewer': HiddenInput()}
 
     def __init__(self, *args, **kwargs):
+        '''
+        Placeholders to be added to the reviewed product fields
+        '''
         super().__init__(*args, **kwargs)
-        field_placeholders = {
+        placeholders = {
             'review_title': 'Review Title',
             'reviewed_product': 'Reviewed Product',
             'reviewer': 'Reviewed By',
             'review': 'Your Review',
-            'date': 'Date & Time',
-        }
+            }
 
         self.fields['review_title'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
-                placeholder = f'{field_placeholders[field]} *'
+                placeholder = f'{placeholders[field]} *'
             else:
-                placeholder = field_placeholders[field]
+                placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
-
-    def clean(self):
-        cleaned_data = super().clean()
-        review_title = cleaned_data.get('review_title')
-        review = cleaned_data.get('review')
-        if not review_title or not review:
-            raise forms.ValidationError('Please enter a review title and review text')
-        return cleaned_data

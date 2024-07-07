@@ -1,60 +1,75 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.urls import reverse
-from django.utils.translation import gettext as _
-from .forms import ProductReviewForm
-from .models import ProductReview
-from django.contrib.auth.models import User
 from profiles.models import UserProfile
 from products.models import Product
+from .forms import ProductReviewForm
+from .models import ProductReview
 
 
 @login_required
-def add_review(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
-        review_form = ProductReviewForm(request.POST)
-        if review_form.is_valid():
-            try:
-                review = review_form.save(commit=False)
-                review.reviewer = UserProfile.objects.get(user=request.user)
-                review.product = product
-                review.save()
-                messages.success(request, _('Success! Your review has been added to our website'))
-                return redirect(reverse('product_detail', args=[product.id]))
-            except ValidationError as e:
-                messages.error(request, _('There was an error adding your review to the site. Please check all fields in the form and try again'))
-                return redirect(reverse('add_review', args=[product.id]))
-    else:
+def add_review(request):
+    '''
+    View that returns the add a review view
+    '''
+    review_form = ProductReviewForm()
+
+    # If user is authenticated then review form will show
+    if request.user.is_authenticated:
         review_form = ProductReviewForm(initial={
             'reviewer': UserProfile.objects.get(user=request.user)
             })
+    else:
+        # If user is unregistered then they form will not show
+        review_form = ProductReviewForm()
+
+    if request.method == 'POST':
+        review_form = ProductReviewForm(request.POST)
+        sender = UserProfile.objects.get(user=request.user)
+
+        if review_form.is_valid():
+            try:
+                review_form.save()
+                messages.success(request, "Success! Your review has been \
+                                           added to our website")
+                return redirect(reverse('home'))
+            except Exception as e:
+                messages.error(request, "There was an error adding your \
+                                         review to the site. Please check all \
+                                         fields in the form and try again")
+                return redirect(reverse('add_review'))
+        else:
+            pass
 
     template = 'reviews/add_review.html'
     context = {
         'form': review_form,
-        'product': product,
     }
 
     return render(request, template, context=context)
 
 
+
 @login_required
 def edit_review(request, review_id):
+    '''
+    A view that allows for the editing of a review
+    '''
     review = get_object_or_404(ProductReview, pk=review_id)
-    if review.reviewer.user!= request.user:
-        messages.error(request, _('You do not have permission to edit this review'))
-        return redirect(reverse('product_detail', args=[review.product.id]))
+
+    if request.user.is_authenticated:
+        review_form = ProductReviewForm(instance=review)
+    else:
+        review_form = ProductReviewForm()
 
     if request.method == 'POST':
         review_form = ProductReviewForm(request.POST, instance=review)
+
         if review_form.is_valid():
             review_form.save()
-            messages.success(request, _('Success! The edit you made to your review updated'))
+            messages.success(request, 'Success! The edit you made to your \
+                                       review updated')
             return redirect(reverse('product_detail', args=[review.product.id]))
-    else:
-        review_form = ProductReviewForm(instance=review)
 
     template = 'reviews/edit_review.html'
     context = {
@@ -67,19 +82,22 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
+    '''
+    View that deletes a review
+    '''
     review = get_object_or_404(ProductReview, pk=review_id)
-    if review.reviewer.user!= request.user:
-        messages.error(request, _('You do not have permission to delete this review'))
-        return redirect(reverse('product_detail', args=[review.product.id]))
-
+    if request.user.userprofile != review.reviewer:
+        messages.error(request, 'You do not have permission to delete this review')
+        return redirect(reverse('home'))
+    
     if request.method == 'POST':
         review.delete()
-        messages.success(request, _('Review deleted successfully!'))
+        messages.success(request, 'Success! Your review has been deleted')
         return redirect(reverse('product_detail', args=[review.product.id]))
-    else:
-        template = 'reviews/delete_review.html'
-        context = {
-            'review': review,
-        }
+    
+    template = 'reviews/delete_review.html'
+    context = {
+        'review': review,
+    }
 
-        return render(request, template, context=context)
+    return render(request, template, context=context)

@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category, Subcategory
+from reviews.models import ProductReview
 from .forms import ProductForm
 
 # Create your views here.
@@ -76,11 +77,13 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
+    reviews = ProductReview.objects.filter(reviewed_product_id=product_id)
 
     context = {
         'product': product,
         'categories': categories,
         'subcategories': subcategories,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
