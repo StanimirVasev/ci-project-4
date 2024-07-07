@@ -16,27 +16,22 @@
         <div class="row">
             <div class="col-10 offset-1">
                 <div class="blog-category-list">
-                    {% for blog in blogs %}
+                    {% for post in posts %}
                         <div class="card h-100 border-0">
-                            <a href="{% url 'blog_detail' blog.id %}">
-                                <img class="card-img-top img-fluid" src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                            <a href="{% url 'blog_detail' post.pk %}">
+                                <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
                             </a>
                             <div class="card-body pb-0">
-                                <p class="mb-0 font-weight-bold text-center">{{ blog.title }}</p>
+                                <p class="mb-0 font-weight-bold text-center">{{ post.title }}</p>
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-center">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-center">{{ blog.date }}</p>
-                                        <p class="lead mb-0 text-center">
-                                            {% if blog.author %}
-                                                <small class="text-muted">By {{ blog.author }}</small>
-                                            {% endif %}
-                                        </p>
+                                        <p class="lead mb-0 text-center">{{ post.created_on }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <a href="{% url 'blog_detail' blog.id %}" class="btn btn-block btn-black">Read more</a>
+                            <a href="{% url 'blog_detail' post.pk %}" class="btn btn-block btn-black">Read more</a>
                         </div>
                     {% endfor %}
                 </div>
