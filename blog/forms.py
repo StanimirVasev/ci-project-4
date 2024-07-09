@@ -2,9 +2,9 @@ from django import forms
 from .models import Post, BlogCategory
 
 class PostForm(forms.ModelForm):
-    categories = forms.ModelMultipleChoiceField(
+    categories = forms.ModelChoiceField(
         queryset=BlogCategory.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.Select, 
     )
 
     class Meta:
@@ -17,8 +17,3 @@ class PostForm(forms.ModelForm):
         self.fields['categories'].widget.choices = [
             (cat.id, cat.get_friendly_name()) for cat in BlogCategory.objects.all()
         ]
-
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = BlogCategory
-        fields = ('name', 'friendly_name')
