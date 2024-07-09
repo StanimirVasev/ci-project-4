@@ -1,0 +1,34 @@
+[
+{
+    "model": "blog.blogcategory",
+    "pk": 1,
+    "fields": {
+        "name": "wildlife_photography",
+        "friendly_name": "Wildlife photography"
+    }
+},
+{
+    "model": "blog.blogcategory",
+    "pk": 2,
+    "fields": {
+        "name": "portrait_photography",
+        "friendly_name": "Portrait photography"
+    }
+},
+{
+    "model": "blog.blogcategory",
+    "pk": 3,
+    "fields": {
+        "name": "night_photography",
+        "friendly_name": "Night photography"
+    }
+},
+{
+    "model": "blog.blogcategory",
+    "pk": 4,
+    "fields": {
+        "name": "camera_equipment",
+        "friendly_name": "Camera Equipment"
+    }
+}
+]
