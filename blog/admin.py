@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import BlogCategory, Post
+from .models import BlogCategory, Post
 from .forms import PostForm
 
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -16,15 +16,15 @@ class PostAdmin(admin.ModelAdmin):
         'title',
         'friendly_title',
         'created_on',
-        'display_blog_categories',
+        'display_blog_category',
     )
     list_filter = ('created_on', 'blog_categories')
     ordering = ('-created_on',)
     search_fields = ('title', 'body')
 
-    def display_blog_categories(self, obj):
-        return ', '.join([category.get_friendly_name() for category in obj.blog_categories.all()])
-    display_blog_categories.short_description = 'Blog Categories'
+    def display_blog_category(self, obj):
+        return obj.blog_categories.get_friendly_name() if obj.blog_categories else 'None'
+    display_blog_category.short_description = 'Blog Category'
 
 admin.site.register(BlogCategory, BlogCategoryAdmin)
 admin.site.register(Post, PostAdmin)
