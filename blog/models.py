@@ -11,7 +11,7 @@ class BlogCategory(models.Model):
         return self.name
 
     def get_friendly_name(self):
-        return self.friendly_name
+        return self.friendly_name or self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=254)
