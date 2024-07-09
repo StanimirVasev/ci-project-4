@@ -1,13 +1,9 @@
 from django import forms
 from .models import Post, BlogCategory
-from .widgets import CustomClearableFileInput
+from products.widgets import CustomClearableFileInput
 
 class PostForm(forms.ModelForm):
-    # Use CustomClearableFileInput for the image field
-    image = forms.ImageField(
-        widget=CustomClearableFileInput
-    )
-    
+    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
     blog_categories = forms.ModelMultipleChoiceField(
         queryset=BlogCategory.objects.all(),
         widget=forms.CheckboxSelectMultiple
