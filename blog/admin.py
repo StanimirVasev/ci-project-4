@@ -1,6 +1,6 @@
 from django.contrib import admin
 from blog.models import BlogCategory, Post
-from products.forms import PostForm, BlogCategoryForm 
+from products.forms import PostForm, BlogCategoryForm
 
 class BlogCategoryAdmin(admin.ModelAdmin):
     form = BlogCategoryForm
