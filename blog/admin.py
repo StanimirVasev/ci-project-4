@@ -1,9 +1,7 @@
 from django.contrib import admin
 from blog.models import BlogCategory, Post
-from blog.forms import PostForm, BlogCategoryForm
 
 class BlogCategoryAdmin(admin.ModelAdmin):
-    form = BlogCategoryForm
     list_display = (
         'friendly_name',
         'name',
@@ -12,7 +10,6 @@ class BlogCategoryAdmin(admin.ModelAdmin):
     search_fields = ('name', 'friendly_name')
 
 class PostAdmin(admin.ModelAdmin):
-    form = PostForm
     list_display = (
         'title',
         'friendly_title',

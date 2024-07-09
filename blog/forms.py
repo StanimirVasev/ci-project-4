@@ -1,23 +1,15 @@
 from django import forms
-from .models import Post, BlogCategory
-from products.widgets import CustomClearableFileInput
+from .models import Post, Category
 
 class PostForm(forms.ModelForm):
-    image = forms.ImageField(
-        label='Image', 
-        required=False, 
-        widget=CustomClearableFileInput
-    )
-    blog_categories = forms.ModelMultipleChoiceField(
-        queryset=BlogCategory.objects.all(),
-        widget=forms.CheckboxSelectMultiple
-    )
+    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
 
     class Meta:
         model = Post
-        fields = ('title', 'body', 'blog_categories', 'image_url', 'image')
+        fields = ('title', 'body', 'categories')
 
-class BlogCategoryForm(forms.ModelForm):
+
+class CategoryForm(forms.ModelForm):
     class Meta:
-        model = BlogCategory
-        fields = ('name', 'friendly_name')
+        model = Category
+        fields = ('name',)
