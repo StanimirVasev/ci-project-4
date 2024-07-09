@@ -31,10 +31,16 @@
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'blog_blog' %}" id="blog-link">
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="blog-categories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Blog
             </a>
+            <div class="dropdown-menu border-0" aria-labelledby="blog-categories-link">
+                {% for blog_category in blog_categories %}
+                    <a href="{% url 'blog_category' blog_category.name %}" class="dropdown-item">{{ blog_category.friendly_name }}</a>
+                {% endfor %}
+                <a href="{% url 'blog_list' %}" class="dropdown-item">All Blogs</a>
+            </div>
         </li>
     </ul>
 </div>

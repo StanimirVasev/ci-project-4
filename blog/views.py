@@ -1,28 +1,47 @@
 from django.shortcuts import render, get_object_or_404
-from.models import Post, Category, Comment
+from .models import Post, BlogCategory
+from products.models import Category, Subcategory
 
-def blog_blog(request):
+def blog_list(request):
     posts = Post.objects.all().order_by("-created_on")
+    blog_categories = BlogCategory.objects.all()
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
     context = {
-        "posts": posts,
+        'posts': posts,
+        'blog_categories': blog_categories,
+        'categories': categories,
+        'subcategories': subcategories,
     }
     return render(request, "blog/blog.html", context)
 
-def blog_category(request, category):
+def blog_category(request, category_name):
+    blog_categories = BlogCategory.objects.all()
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    category = get_object_or_404(BlogCategory, name__iexact=category_name)
     posts = Post.objects.filter(
-        categories__name__contains=category
+        blog_categories__name__icontains=category_name
     ).order_by("-created_on")
     context = {
-        "category": category,
-        "posts": posts,
+        'category': category,
+        'category_name': category_name,
+        'posts': posts,
+        'blog_categories': blog_categories,
+        'categories': categories,
+        'subcategories': subcategories,
     }
     return render(request, "blog/blog_category.html", context)
 
 def blog_detail(request, pk):
+    blog_categories = BlogCategory.objects.all()
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
     post = get_object_or_404(Post, pk=pk)
-    comments = Comment.objects.filter(post=post)
     context = {
-        "post": post,
-        "comments": comments,
+        'post': post,
+        'blog_categories': blog_categories,
+        'categories': categories,
+        'subcategories': subcategories,
     }
     return render(request, "blog/blog_detail.html", context)

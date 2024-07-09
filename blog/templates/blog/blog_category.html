@@ -5,7 +5,6 @@
     <div class="container header-container text-center">
         <div class="row">
             <div class="col">
-                <h1 class="logo-font">{{ category.name }} Blogs</h1>
             </div>
         </div>
     </div>
@@ -14,28 +13,74 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-10 offset-1">
-                <div class="blog-category-list">
-                    {% for post in posts %}
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">{{ category.friendly_name }}</h2>
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+                
+        <div class="row">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-4">
                         <div class="card h-100 border-0">
-                            <a href="{% url 'blog_detail' post.pk %}">
-                                <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
-                            </a>
+                            {% if post.image %}
+                                <a href="{% url 'blog_detail' post.pk %}">
+                                    <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'blog_detail' post.pk %}">
+                                    <img class="card-img-top img-fluid" src="{% static 'images/default-blog-image.png' %}" alt="{{ post.title }}">
+                                </a>
+                            {% endif %}
                             <div class="card-body pb-0">
                                 <p class="mb-0 font-weight-bold text-center">{{ post.title }}</p>
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-center">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-center">{{ post.created_on }}</p>
+                                        <p class="mb-0 text-center text-muted">
+                                            {% for category in post.blog_categories.all %}
+                                                {{ category.friendly_name }}
+                                                {% if not forloop.last %},{% endif %}
+                                            {% endfor %}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <a href="{% url 'blog_detail' post.pk %}" class="btn btn-block btn-black">Read more</a>
                         </div>
-                    {% endfor %}
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div class="col-12 d-none d-md-block d-lg-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="col-12 d-none d-xl-block mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="col text-center">
+                    <p>No posts available for this category.</p>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
+    <div class="btt-button">
+        <a class="btt-link">
+            <i class="fas fa-arrow-up"></i>
+        </a>    
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        document.querySelector('.btt-link').addEventListener('click', function(e) {
+            window.scrollTo(0, 0);
+        });
+    </script>
 {% endblock %}

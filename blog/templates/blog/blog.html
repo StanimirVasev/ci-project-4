@@ -13,11 +13,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                {% if category %}
-                    <h2 class="logo-font">{{ category.name }}</h2>
-                {% else %}
-                    <h2 class="logo-font">All Blogs</h2>
-                {% endif %}
+                <h2 class="logo-font">All Blogs</h2>
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -26,16 +22,25 @@
             {% for post in posts %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100 border-0">
+                        {% if post.image %}
+                            <a href="{% url 'blog_detail' post.pk %}">
+                                <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
+                            </a>
+                        {% else %}
+                            <a href="{% url 'blog_detail' post.pk %}">
+                                <img class="card-img-top img-fluid" src="{% static 'noimage.png' %}" alt="{{ post.title }}">
+                            </a>
+                        {% endif %}
                         <div class="card-body pb-0">
                             <p class="mb-0 font-weight-bold text-center">{{ post.title }}</p>
                         </div>
                         <div class="card-body pb-0">
-                            <p class="mb-0 text-center">
-                                {% for category in post.categories.all %}
-                                    {{ category.name }}
+                            <p class="mb-0 text-center text-muted">
+                                {% for category in post.blog_categories.all %}
+                                    {{ category.friendly_name }}
                                     {% if not forloop.last %},{% endif %}
                                 {% empty %}
-                                    Uncategorized
+                                    Uncategorised
                                 {% endfor %}
                             </p>
                         </div>
@@ -64,21 +69,19 @@
                 {% endif %}
             {% endfor %}
         </div>
-            </div>
-        </div>
     </div>
     <div class="btt-button">
         <a class="btt-link">
             <i class="fas fa-arrow-up"></i>
-        </a>	
+        </a>    
     </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript">
-		$('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-		})
-	</script>
+        document.querySelector('.btt-link').addEventListener('click', function(e) {
+            window.scrollTo(0, 0);
+        });
+    </script>
 {% endblock %}

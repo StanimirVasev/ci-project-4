@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-stanimirvase-ciproject4-z5s4hvy3fjm.ws.codeinstitute-ide.net',
@@ -90,6 +91,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
+                'home.context_processors.blog_and_product_categories_processor',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

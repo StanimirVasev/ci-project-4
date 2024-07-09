@@ -1,20 +1,18 @@
-# forms.py
 from django import forms
-from .models import Post, Category, Comment
+from .models import Post, BlogCategory
 
 class PostForm(forms.ModelForm):
-    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
+    blog_categories = forms.ModelMultipleChoiceField(
+        queryset=BlogCategory.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
 
     class Meta:
         model = Post
-        fields = ('title', 'body', 'categories')
+        fields = ('title', 'body', 'blog_categories', 'image_url', 'image')
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('author', 'body')
 
-class CategoryForm(forms.ModelForm):
+class BlogCategoryForm(forms.ModelForm):
     class Meta:
-        model = Category
-        fields = ('name',)
+        model = BlogCategory
+        fields = ('name', 'friendly_name')
