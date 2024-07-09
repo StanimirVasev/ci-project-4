@@ -36,12 +36,7 @@
                         </div>
                         <div class="card-body pb-0">
                             <p class="mb-0 text-center text-muted">
-                                {% for category in post.blog_categories.all %}
-                                    {{ category.friendly_name }}
-                                    {% if not forloop.last %},{% endif %}
-                                {% empty %}
-                                    Uncategorised
-                                {% endfor %}
+                                {{ post.blog_category.get_friendly_name }}
                             </p>
                         </div>
                         <a href="{% url 'blog_detail' post.pk %}" class="btn btn-block btn-black">Read more</a>
