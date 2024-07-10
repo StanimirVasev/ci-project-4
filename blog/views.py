@@ -3,24 +3,34 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.core.paginator import Paginator
 from .models import Post, BlogCategory
 from products.models import Category, Subcategory
 from .forms import BlogForm 
 
-def blog_list(request):
+def blog_list(request, page=1):
     posts = Post.objects.all().order_by("-created_on")
     blog_categories = BlogCategory.objects.all()
     categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
+
+    paginator = Paginator(posts, 12) 
+
+    try:
+        page_obj = paginator.page(page)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
     context = {
-        'posts': posts,
+        'page_obj': page_obj,
+        'posts': page_obj.object_list, 
         'blog_categories': blog_categories,
         'categories': categories,
         'subcategories': subcategories,
     }
     return render(request, "blog/blog.html", context)
 
-def blog_category(request, category_name):
+def blog_category(request, category_name, page=1):
     blog_categories = BlogCategory.objects.all()
     categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
@@ -30,11 +40,20 @@ def blog_category(request, category_name):
     
     # Filter posts based on the `blog_categories` field
     posts = Post.objects.filter(blog_categories=category).order_by("-created_on")
+
+    paginator = Paginator(posts, 12)  # Adjust the number of posts per page
+
+    try:
+        page_obj = paginator.page(page)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
     
     context = {
         'category': category,
         'category_name': category_name,
-        'posts': posts,
+        'page_obj': page_obj,
+        'posts': page_obj.object_list,
         'blog_categories': blog_categories,
         'categories': categories,
         'subcategories': subcategories,
