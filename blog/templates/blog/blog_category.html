@@ -40,10 +40,11 @@
                                 <div class="row">
                                     <div class="col">
                                         <p class="mb-0 text-center text-muted">
-                                            {% for category in post.blog_categories.all %}
-                                                {{ category.friendly_name }}
-                                                {% if not forloop.last %},{% endif %}
-                                            {% endfor %}
+                                            {% if post.blog_categories %}
+                                                {{ post.blog_categories.get_friendly_name }}
+                                            {% else %}
+                                                No Category
+                                            {% endif %}
                                         </p>
                                     </div>
                                 </div>

@@ -17,12 +17,12 @@
             <div class="col-12">
                 <div class="blog-post-detail">
                     <p class="text-center text-muted">Published on {{ post.created_on|date:"F j, Y" }} | 
-                        Category:
-                        {% for category in post.blog_categories.all %}
-                            {{ category.friendly_name }}{% if not forloop.last %}, {% endif %}
-                        {% empty %}
-                            Uncategorised
-                        {% endfor %}
+                        Category: 
+                        {% if post.blog_categories %}
+                            {{ post.blog_categories.get_friendly_name }}
+                        {% else %}
+                            No Category
+                        {% endif %}
                     </p>
                     <p>{{ post.body|safe }}</p>
                     <a href="{% url 'blog_list' %}" class="btn btn-black">Back to All Blogs</a>

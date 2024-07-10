@@ -15,16 +15,16 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'friendly_title',
-        'display_blog_category',
+        'display_blog_categories',
         'created_on',
     )
-    list_filter = ('created_on', 'blog_category')
+    list_filter = ('created_on', 'blog_categories')
     ordering = ('-created_on',)
     search_fields = ('title', 'body')
 
-    def display_blog_category(self, obj):
-        return obj.blog_category.get_friendly_name() if obj.blog_category else 'None'
-    display_blog_category.short_description = 'Blog Category'
+    def display_blog_categories(self, obj):
+        return obj.blog_categories.get_friendly_name() if obj.blog_categories else 'None'
+    display_blog_categories.short_description = 'Blog Category'
 
 admin.site.register(BlogCategory, BlogCategoryAdmin)
 admin.site.register(Post, PostAdmin)

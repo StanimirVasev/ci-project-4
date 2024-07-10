@@ -36,7 +36,11 @@
                         </div>
                         <div class="card-body pb-0">
                             <p class="mb-0 text-center text-muted">
-                                {{ post.blog_category.get_friendly_name }}
+                                {% if post.blog_categories %}
+                                    {{ post.blog_categories.get_friendly_name }}
+                                {% else %}
+                                    No Category
+                                {% endif %}
                             </p>
                         </div>
                         <a href="{% url 'blog_detail' post.pk %}" class="btn btn-block btn-black">Read more</a>

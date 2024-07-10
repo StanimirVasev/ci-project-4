@@ -37,7 +37,7 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="blog-categories-link">
                 {% for blog_category in blog_categories %}
-                    <a href="{% url 'blog_category' blog_category.name %}" class="dropdown-item">{{ blog_category.friendly_name }}</a>
+                    <a href="{% url 'blog_category' blog_category.name %}" class="dropdown-item">{{ blog_category.get_friendly_name }}</a>
                 {% endfor %}
                 <a href="{% url 'blog_list' %}" class="dropdown-item">All Blogs</a>
             </div>
