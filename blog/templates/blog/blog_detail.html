@@ -24,8 +24,16 @@
                             No Category
                         {% endif %}
                     </p>
-                    <p>{{ post.body|safe }}</p>
-                    <a href="{% url 'blog_list' %}" class="btn btn-black">Back to All Blogs</a>
+                    <p class="text-center text-muted">
+                        {% if request.user.is_superuser %}
+                            <small>
+                                <a href="{% url 'edit_blog' post.pk %}">Edit</a> | 
+                                <a class="text-danger" href="{% url 'delete_blog' post.pk %}">Delete</a>
+                            </small>
+                        {% endif %}
+                    </p>
+                    <p class="mb-0 mt-4">{{ post.body|safe }}</p>
+                    <a href="{% url 'blog_list' %}" class="btn btn-black mb-0 mt-4">Back to All Blogs</a>
                 </div> 
             </div>
         </div>

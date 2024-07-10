@@ -42,6 +42,14 @@
                                     No Category
                                 {% endif %}
                             </p>
+                            <p class="mb-0 text-center text-muted">
+                                {% if request.user.is_superuser %}
+                                    <small>
+                                        <a href="{% url 'edit_blog' post.pk %}">Edit</a> | 
+                                        <a class="text-danger" href="{% url 'delete_blog' post.pk %}">Delete</a>
+                                    </small>
+                                {% endif %}
+                            </p>
                         </div>
                         <a href="{% url 'blog_detail' post.pk %}" class="btn btn-block btn-black">Read more</a>
                     </div>
