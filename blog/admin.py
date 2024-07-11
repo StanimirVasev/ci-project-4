@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import BlogCategory, Post
 from .forms import PostForm
 
+
 class BlogCategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -9,6 +10,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
     )
     ordering = ('friendly_name',)
     search_fields = ('name', 'friendly_name')
+
 
 class PostAdmin(admin.ModelAdmin):
     form = PostForm
@@ -23,8 +25,12 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'body')
 
     def display_blog_categories(self, obj):
-        return obj.blog_categories.get_friendly_name() if obj.blog_categories else 'None'
+        return (
+            obj.blog_categories.get_friendly_name()
+            if obj.blog_categories else 'None'
+        )
     display_blog_categories.short_description = 'Blog Category'
+
 
 admin.site.register(BlogCategory, BlogCategoryAdmin)
 admin.site.register(Post, PostAdmin)

@@ -1,6 +1,7 @@
 from blog.models import BlogCategory
 from products.models import Category, Subcategory
 
+
 def blog_and_product_categories_processor(request):
     """
     A context processor to provide blog categories and product categories

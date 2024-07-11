@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from profiles.models import UserProfile
@@ -47,4 +47,3 @@ def add_review(request):
     }
 
     return render(request, template, context=context)
-    
