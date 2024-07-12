@@ -4,6 +4,8 @@
 
 CamShop was created and built by Stanimir Vasev as final milestone project for Code Institute. The website is a Django e-commerce website for a leading provider of high-quality cameras and accessories. Users of the site are able to purchase camera equipment whether they have registered or checkout as a guest. Registered users however benefit from more access to certain features on the site such as having order history in their profile section.
 
+[Visit live website](https://ci-project-4-ff2f4853aa3a.herokuapp.com/)
+
 <hr>
 
 ## **Table of contents** ## 
@@ -323,6 +325,7 @@ The site functionality will allow users to search and view all of the products o
     * image_url: URLField (max_length=1024, null=True, blank=True)
     * image: ImageField (null=True, blank=True)
 
+</details>
 <hr>
 
 <details>
@@ -669,6 +672,10 @@ The main content area contains a form for adding a new blog post. This form incl
 * Documentation and Support: Comprehensive documentation will be developed to support both users and administrators. This will include FAQs, troubleshooting guides, and detailed contact information for technical support. These resources will ensure users have access to the necessary information to navigate and resolve any issues they encounter, while also providing clear guidance for administrators managing the site.
 
 * Company Pages: Additional company pages will be created to enhance transparency and engagement. These will include an "About Us" page to provide information about the company, a "Our Culture" page to showcase the company's values and work environment, and a "Careers" page to outline job opportunities and career development within the company. These pages will help build a stronger connection with users and potential employees by highlighting the company's mission, culture, and career prospects.
+
+</details>
+<hr>
+
 
 <details>
 <summary><strong>
@@ -1050,7 +1057,6 @@ Mobile testing was carried out on the following devices:<br>
 * During mobile testing, I discovered that the quantity selector works fine but doesn't display well and hides the unit box on smaller screens. Media query has to be updated for smaller screens.
 
 </details>
-
 <hr>
 
 <details>
@@ -1312,7 +1318,6 @@ As mentioned previously, I have used Canva Pro to source and create most of the 
 * A final big thank you to all of the other students, CI alumni and CI staff who were always willing to help out and advise on the official CI Slack channels.
 
 </details>
-
 <hr>
 
 <details>
