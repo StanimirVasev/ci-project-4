@@ -1,7 +1,5 @@
 # **CamShop** #
 
-![Image of site on many screens](/media/readme_images/site_responsive_image.png)
-
 ## **Introduction** ##
 
 CamShop was created and built by Stanimir Vasev as final milestone project for Code Institute. The website is a Django e-commerce website for a leading provider of high-quality cameras and accessories. Users of the site are able to purchase camera equipment whether they have registered or checkout as a guest. Registered users however benefit from more access to certain features on the site such as having order history in their profile section.
@@ -17,21 +15,30 @@ CamShop was created and built by Stanimir Vasev as final milestone project for C
 * 1.4 Wireframes
 * 1.5 Database Design
 
-### **2. Features** ###
+### **2.Existing Features** ###
 * 2.1 Homepage 
-* 2.2 Top header
-* 2.3 Navbar
-* 2.4 The Shop Page
-* 2.5 Product Details
-* 2.6 Product Review
-* 2.7 The Profile
-* 2.8 The Shopping Bag
-* 2.9 The Checkout Page
-* 2.10 Purchase Complete
-* 2.11 Stripe 
-* 2.12 Sign Up and Emails
-* 2.13 Login
-* 2.14 Toasts
+* 2.2 Top Header
+* 2.3 The Navbar
+* 2.4 The Products Page
+* 2.5 Product Detail Page
+* 2.6 Add Product Page
+* 2.7 Edit Product Page
+* 2.8 Add Review Page
+* 2.9 Profile Page
+* 2.10 Bag/Cart Page
+* 2.11 Checkout Page
+* 2.12 Checkout Success Page
+* 2.13 Blogs Page
+* 2.14 Blog Details Page
+* 2.15 Blog Category Page
+* 2.16 Add Blog Page
+* 2.17 Edit Blog Pag
+* 2.18 Toasts
+* 2.19 Sign up and real email notifications via gmail
+* 2.20 Login page
+* 2.21 Stripe Integration
+* 2.22 Footer
+* 2.23 Future Developments
 
 ### **3. Technologies/Languages Used** ###
 * 3.1 Gitpod/Github
@@ -61,17 +68,8 @@ CamShop was created and built by Stanimir Vasev as final milestone project for C
 * 6.2 Code 
 * 6.3 Acknowledgements
 
-### **7. Future Features To Develop** ###
-* 7.1 - Social media login
-* 7.2 - Social media share buttons
-* 7.3 - Paypal Payment Option
-* 7.4 - Wishlist
-* 7.5 - Sort by price functionality
-* 7.6 - Dark Mode
-* 7.7 - Shopping Cart
-
-### **8. Disclaimer** ###
-* 8.0 Disclaimer on project
+### **7. Disclaimer** ###
+* 7.0 Disclaimer on project
 
 <br>
 <hr>
@@ -151,7 +149,6 @@ The site functionality will allow users to search and view all of the products o
 
 * I want to feel secure about the safety of my payment information.
 
-
 * I want to be able to keep track of my purchases at any time on the site so i can: keep track of the value of goods in my cart so i can avoid spending to much money
 
 <hr>
@@ -189,6 +186,37 @@ The site functionality will allow users to search and view all of the products o
 <br>
 
 * The wire frames for the site can be found here: 
+
+<details><summary>Desktop wireframe</summary>
+<summary>Home page view</summary>
+![Image of Homepage](/media/desktop-home.jpg)<br><br>
+<summary>Products and blogs pages</summary>
+![Image of Products and Blogs](/media/desktop-products-and-blog.jpg)<br><br>
+<summary>Product details</summary>
+![Image of Products and Blogs](/media/desktop-product-details.jpg)<br><br>
+<summary>Shopping bag/Cart</summary>
+![Image of Products and Blogs](/media/desktop-shopping-bag.jpg)<br><br>
+
+
+<details><summary>Tablet wireframe</summary>
+<summary>Home page view</summary>
+![Image of Homepage](/media/tablet-home.jpg)<br><br>
+<summary>Products and blogs pages</summary>
+![Image of Products and Blogs](/media/tablet-products-and-blog.jpg)<br><br>
+<summary>Product details</summary>
+![Image of Products and Blogs](/media/tablet-product-details.jpg)<br><br>
+<summary>Shopping bag/Cart</summary>
+![Image of Products and Blogs](/media/tablet-shopping-bag.jpg)<br><br>
+
+<details><summary>Phone wireframe</summary>
+<summary>Home page view</summary>
+![Image of Homepage](/media/phone-home.jpg)<br><br>
+<summary>Products and blogs pages</summary>
+![Image of Products and Blogs](/media/phone-products-and-blog.jpg)<br><br>
+<summary>Product details</summary>
+![Image of Products and Blogs](/media/phone-product-details.jpg)<br><br>
+<summary>Shopping bag/Cart</summary>
+![Image of Products and Blogs](/media/phone-shopping-bag.jpg)<br><br>
 
 <hr>
 
@@ -298,7 +326,7 @@ The site functionality will allow users to search and view all of the products o
 <hr>
 
 <details>
-<summary><strong> 2. Features </strong></summary>
+<summary><strong> 2. Existing Features </strong></summary>
 <br>
 
 #### **2.1 - Homepage** ####
@@ -411,7 +439,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.7 - Add Review Page** ####
+#### **2.8 - Add Review Page** ####
 
 * The Add Review page allows authenticated users, specifically administrators, to leave reviews for products. This page is designed to ensure that only authorised users can provide feedback, maintaining the integrity of the reviews on the website. At the top of the page, there is a white background overlay with a banner that prominently displays the text "Add a Review." The banner is styled to catch the user’s attention and clearly indicate the page’s purpose.
 
@@ -423,7 +451,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.8 - Profile Page** ####
+#### **2.9 - Profile Page** ####
 
 * The Profile page allows users to view and update their personal information, specifically their default delivery details, and also review their order history. The page is designed to be user-friendly and informative, offering a seamless experience for users to manage their account details.
 
@@ -437,7 +465,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.8 - Bag/Cart Page** ####
+#### **2.10 - Bag/Cart Page** ####
 
 * The Bag/Cart page provides users with a detailed overview of their selected products, allowing them to review, update, or remove items before proceeding to checkout. It features a clean and organised layout with essential functionalities for a smooth shopping experience.
 
@@ -466,7 +494,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.8 - Checkout Page** ####
+#### **2.11 - Checkout Page** ####
 
 * The Checkout page provides a seamless and efficient way for users to finalise their purchases. It includes an order summary and a form for entering delivery and payment details. 
 
@@ -490,7 +518,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.9 - Checkout Success Page** ####
+#### **2.12 - Checkout Success Page** ####
 
 * The layout ensures the user receives a clear, comprehensive summary of their order and provides easy navigation options post-purchase.
 
@@ -498,7 +526,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.10 - Blogs Page** ####
+#### **2.13 - Blogs Page** ####
 
 * This page showcases a collection of blog posts in a grid layout. Each blog post is represented by a card that includes an image, the title, and the blog category if assigned. 
 
@@ -514,7 +542,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.11 - Blog Details Page** ####
+#### **2.14 - Blog Details Page** ####
 
 * The blog detail page offers a comprehensive view of an individual blog post. At the top, the page prominently displays the title of the blog post, providing clear identification of the content. 
 
@@ -530,7 +558,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.12 - Blog Category Page** ####
+#### **2.15 - Blog Category Page** ####
 
 * The blog category page displays a collection of blog posts that belong to a specific category. At the top of the page, the category name is prominently shown, followed by a horizontal rule for visual separation.
 
@@ -546,7 +574,7 @@ The Add and Edit Product pages ensure that product management tasks are straight
 
 <hr>
 
-#### **2.13 - Add Blog Page** ####
+#### **2.16 - Add Blog Page** ####
 
 * Similar like the Add Product page, the add blog page allows users to create and submit a new blog post. At the top, there is a section for the page header that includes a heading and a subtitle indicating the purpose of the page.
 
@@ -556,7 +584,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **1.14 - Edit Blog Page** ####
+#### **2.17 - Edit Blog Page** ####
 
 * Similar to the Edit Product page, the edit blog page is designed for users to modify an existing blog post. It starts with a page header that includes a title and subtitle, indicating the page's purpose.
 
@@ -566,7 +594,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.15 - Toasts** ####
+#### **2.18 - Toasts** ####
 
 * Toast notifications serve to provide users with feedback on their actions or system statuses in a non-intrusive manner. They briefly display important messages or updates and are designed to be visually distinctive based on the context, such as success, warning, error, or informational messages.
 
@@ -582,7 +610,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.16 - Sign up and real email notifications via gmail ** ####
+#### **2.19 - Sign up and real email notifications via gmail ** ####
 
 * To become a registered user, individuals can complete the sign-up process quickly and easily. Start by clicking the 'My Account' icon in the top right corner of the page on desktop or in the top row on mobile. From the dropdown menu, select 'Register.'
 
@@ -594,7 +622,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.17 - Login page ** ####
+#### **2.20 - Login page ** ####
 
 * The login page is designed to be straightforward. Users need to enter their username or email address and their password to access their account. Both fields are required, and the form will not submit unless the details are entered correctly.
 
@@ -604,7 +632,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.18 - Stripe Integration ** ####
+#### **2.21 - Stripe Integration ** ####
 
 * This project integrates Stripe to handle payment processing, fulfilling a key requirement of the MS4 project. Once users have completed their shopping and added items to their cart, they proceed to the checkout page. At this stage, a payment intent is created in the Stripe dashboard, which is visible in the Stripe events section.
 
@@ -618,7 +646,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.19 - Footer** ####
+#### **2.22 - Footer** ####
 
 * The footer provides essential information and navigation for users. 
 
@@ -632,7 +660,7 @@ The main content area contains a form for adding a new blog post. This form incl
 
 <hr>
 
-#### **2.20 - Future Developments** ####
+#### **2.23 - Future Developments** ####
 
 * Analytics and Monitoring: To better understand user behaviour and improve site performance, future updates will include the integration of advanced tracking and analytics tools. These tools will monitor user interactions, page performance, and site errors, providing valuable data that can be used to make informed, data-driven improvements to the site.
 
@@ -661,6 +689,7 @@ The main content area contains a form for adding a new blog post. This form incl
 * 3.11 - [Favicon](https://favicon.io/favicon-generator/)
 * 3.12 - [Stripe](https://stripe.com/)
 * 3.13 - [Heroku](https://www.heroku.com/)
+* 3.14 - [Canva](https://www.canva.com/)
 
 </details>
 <hr>
@@ -958,7 +987,7 @@ Six warnings
 
 <hr>
 
-#### **2.1 Manual testing mobile** ####
+#### **2.2 Manual testing mobile** ####
 <br>
 
 * To reduce repetition of the desktop results, for the mobile testing i have just highlighted the different functionalities that mobile users may experience while using the site on a mobile device. I have carried out all of the exact same manual tests on mobile devices as i did on the desktop.
