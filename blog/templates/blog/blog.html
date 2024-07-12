@@ -121,12 +121,11 @@
             <i class="fas fa-arrow-up"></i>
         </a>    
     </div>
-</div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript">
+    <script>
         document.querySelector('.btt-link').addEventListener('click', function(e) {
             window.scrollTo(0, 0);
         });

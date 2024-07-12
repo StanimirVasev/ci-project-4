@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">{{ category.friendly_name }}</h2>
+                <h2 class="logo-font">{{ category.friendly_name }} Blog</h2>
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -127,7 +127,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript">
+    <script>
         document.querySelector('.btt-link').addEventListener('click', function(e) {
             window.scrollTo(0, 0);
         });
