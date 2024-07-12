@@ -187,38 +187,79 @@ The site functionality will allow users to search and view all of the products o
 #### **1.4 - Wireframes ** ####
 <br>
 
-* The wire frames for the site can be found here: 
+*The wireframes for the site can be found here:
 
-<details><summary>Desktop wireframe</summary>
-<summary>Home page view</summary>
-![Image of Homepage](/media/desktop-home.jpg)<br><br>
-<summary>Products and blogs pages</summary>
-![Image of Products and Blogs](/media/desktop-products-and-blog.jpg)<br><br>
-<summary>Product details</summary>
-![Image of Products and Blogs](/media/desktop-product-details.jpg)<br><br>
-<summary>Shopping bag/Cart</summary>
-![Image of Products and Blogs](/media/desktop-shopping-bag.jpg)<br><br>
+<details>
+  <summary>Desktop wireframe</summary>
 
+  <details>
+    <summary>Home page view</summary>
+    <img src="/media/desktop-home.jpg" alt="Image of Homepage">
+  </details>
 
-<details><summary>Tablet wireframe</summary>
-<summary>Home page view</summary>
-![Image of Homepage](/media/tablet-home.jpg)<br><br>
-<summary>Products and blogs pages</summary>
-![Image of Products and Blogs](/media/tablet-products-and-blog.jpg)<br><br>
-<summary>Product details</summary>
-![Image of Products and Blogs](/media/tablet-product-details.jpg)<br><br>
-<summary>Shopping bag/Cart</summary>
-![Image of Products and Blogs](/media/tablet-shopping-bag.jpg)<br><br>
+  <details>
+    <summary>Products and blogs pages</summary>
+    <img src="/media/desktop-products-and-blog.jpg" alt="Image of Products and Blogs">
+  </details>
 
-<details><summary>Phone wireframe</summary>
-<summary>Home page view</summary>
-![Image of Homepage](/media/phone-home.jpg)<br><br>
-<summary>Products and blogs pages</summary>
-![Image of Products and Blogs](/media/phone-products-and-blog.jpg)<br><br>
-<summary>Product details</summary>
-![Image of Products and Blogs](/media/phone-product-details.jpg)<br><br>
-<summary>Shopping bag/Cart</summary>
-![Image of Products and Blogs](/media/phone-shopping-bag.jpg)<br><br>
+  <details>
+    <summary>Product details</summary>
+    <img src="/media/desktop-product-details.jpg" alt="Image of Product Details">
+  </details>
+
+  <details>
+    <summary>Shopping bag/Cart</summary>
+    <img src="/media/desktop-shopping-bag.jpg" alt="Image of Shopping Bag">
+  </details>
+</details>
+
+<details>
+  <summary>Tablet wireframe</summary>
+
+  <details>
+    <summary>Home page view</summary>
+    <img src="/media/tablet-home.jpg" alt="Image of Homepage">
+  </details>
+
+  <details>
+    <summary>Products and blogs pages</summary>
+    <img src="/media/tablet-products-and-blog.jpg" alt="Image of Products and Blogs">
+  </details>
+
+  <details>
+    <summary>Product details</summary>
+    <img src="/media/tablet-product-details.jpg" alt="Image of Product Details">
+  </details>
+
+  <details>
+    <summary>Shopping bag/Cart</summary>
+    <img src="/media/tablet-shopping-bag.jpg" alt="Image of Shopping Bag">
+  </details>
+</details>
+
+<details>
+  <summary>Phone wireframe</summary>
+
+  <details>
+    <summary>Home page view</summary>
+    <img src="/media/phone-home.jpg" alt="Image of Homepage">
+  </details>
+
+  <details>
+    <summary>Products and blogs pages</summary>
+    <img src="/media/phone-products-and-blog.jpg" alt="Image of Products and Blogs">
+  </details>
+
+  <details>
+    <summary>Product details</summary>
+    <img src="/media/phone-product-details.jpg" alt="Image of Product Details">
+  </details>
+
+  <details>
+    <summary>Shopping bag/Cart</summary>
+    <img src="/media/phone-shopping-bag.jpg" alt="Image of Shopping Bag">
+  </details>
+</details>
 
 <hr>
 
@@ -1322,7 +1363,7 @@ As mentioned previously, I have used Canva Pro to source and create most of the 
 
 <details>
 <summary><strong>
-8. Disclaimer
+7. Disclaimer
 </strong></summary>
 <br>
 
