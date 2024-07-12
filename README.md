@@ -77,10 +77,8 @@ CamShop was created and built by Stanimir Vasev as final milestone project for C
 <hr>
 
 <details>
-<summary><strong>
-1. User Experience (UX)
-</strong></summary>
-<br>
+  <summary><strong>1. User Experience (UX)</strong></summary>
+  <br>
 
 #### **1.1 - Target Audience** ####
 
@@ -121,7 +119,7 @@ The site functionality will allow users to search and view all of the products o
 
 * I want to provide guest users the ability to purchase from the store without registration so the store doesn’t lose any potential sales.
 
-#### **1.2 - User Stories** ####
+#### **1.2.1 - User Stories** ####
 
 * The site includes easy navigation, various product and blog categories and subcategories to search and view with a few clicks and contact information to make it easier for the user to get in touch with the store owner. The website has clean but interactive design to ensure users can find their desired products or information quickly but still feel engaged by interacting with the visual elements. <br><br>
 
@@ -370,8 +368,8 @@ The site functionality will allow users to search and view all of the products o
 <hr>
 
 <details>
-<summary><strong> 2. Existing Features </strong></summary>
-<br>
+  <summary><strong>2. Existing Features</strong></summary>
+  <br>
 
 #### **2.1 - Homepage** ####
 
@@ -717,12 +715,9 @@ The main content area contains a form for adding a new blog post. This form incl
 </details>
 <hr>
 
-
 <details>
-<summary><strong>
-3. Technologies/Languages Used
-</strong></summary>
-<br>
+  <summary><strong>3. Technologies/Languages Used</strong></summary>
+  <br>
 
 * 3.1 - [Gitpod](https://www.gitpod.io/)
 * 3.2 - [HTML5](https://html.com/html5/#What_is_HTML)
@@ -743,11 +738,8 @@ The main content area contains a form for adding a new blog post. This form incl
 <hr>
 
 <details>
-<summary><strong>
-4. Testing
-</strong></summary>
-
-<br>
+  <summary><strong>4. Testing</strong></summary>
+  <br>
 
 #### **4.1 Testing** ####
 
@@ -949,10 +941,8 @@ Six warnings
 <hr>
 
 <details>
-<summary><strong>
-2. Manual Testing
-</strong></summary>
-<br>
+  <summary><strong>2. Manual Testing</strong></summary>
+  <br>
 
 #### **2.1 Manual testing desktop** ####
 
@@ -1063,10 +1053,8 @@ Mobile testing was carried out on the following devices:<br>
 <hr>
 
 <details>
-<summary><strong>
-3. Responsiveness
-</strong></summary>
-<br>
+  <summary><strong>3. Responsiveness</strong></summary>
+  <br>
 
 **3.1 Chrome Dev Tools**
 * I have tested the site’s responsiveness using Google DevTools, covering screen sizes from a maximum of 1870px x 767px down to a minimum of 320px x 480px. The site performs as expected across all tested dimensions.
@@ -1101,10 +1089,8 @@ Mobile testing was carried out on the following devices:<br>
 <hr>
 
 <details>
-<summary><strong>
-5. Deployment
-</strong></summary>
-<br>
+  <summary><strong>5. Deployment</strong></summary>
+  <br>
 
 #### **Deployment to Heroku and Cloning Instructions** ####
 
@@ -1335,10 +1321,8 @@ src="media/..." to src="{{ MEDIA_URL }}<insert image name and file type>".
 <hr>
 
 <details>
-<summary><strong>
-6. Credits
-</strong></summary>
-<br>
+  <summary><strong>6. Credits</strong></summary>
+  <br>
 
 #### **6.1 Media** ####
 
@@ -1362,10 +1346,8 @@ As mentioned previously, I have used Canva Pro to source and create most of the 
 <hr>
 
 <details>
-<summary><strong>
-7. Disclaimer
-</strong></summary>
-<br>
+  <summary><strong>7. Disclaimer</strong></summary>
+  <br>
 
 * This website and all of its content was completed for my final assessment project with Code Institute. The site is strictly for educational purposes only, there is no commercial revenue and being generated from the site.
 
